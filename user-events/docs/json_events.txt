@@ -1,0 +1,159 @@
+JSON
+====
+
+JSON log format for user events (client->server)
+{
+    "eventTimestampMillisecsFromEpoch": "1232467643123", <!-- milliseconds past epoch -->
+
+    "uuid": "550e8400-e29b-41d4-a716-446655440000", <!-- needed for de-dupe - can't guaranteed mobile gets ACKs -->
+
+    "apikey": "iphone",
+
+    "userId": 123,
+
+    "eventType": "like_button_click", <!-- need some conventions -->
+
+    "networkStatus": "offline", <!- offline [mobile] / online -->
+
+    "context": {
+        "containerName": "now_playing_page", <!-- standardized -->
+        "stationIdentPlaying": "a123",       <!-- standardized -->
+        "likePanelPosition": 2               <!-- arbitrary -->
+    },
+
+    <!-- arbitary key-value pairs, depending upon eventType.
+         standard keys (trackId, stationIdent etc.) should be used where possible, since these can
+         be automatically processed by events warehouse -->
+
+    "eventData": {
+        "stationIdent": "a123",      <!-- standardized -->
+        "trackId": 345,              <!-- standardized -->
+        "trackVersionId": 456,       <!-- standardized -->
+	"eventSpecificKey": "search" <!-- arbitrary -->
+    }
+}
+
+JSON log format for user events (extra fields at server-side)
+{
+    "serverTimestamp": "1232143542" <!-- seconds past epoch, GMT. Important since we can't trust client timestamps -->
+}
+
+Events types:
+
+	 App close
+	 Web browser close
+	 App open (includes device model + app version) [equivalent on web?]
+
+Specific events:
+
+{
+    "client": {
+        "platform": "iphone",
+        "model": "5S",
+	"revision": "1", <!-- optional -->
+        "appVersion": "2.2.1"
+    }
+}
+
+PROTOCOL BUFFERS
+================
+
+message BBMUserEvent {
+
+	required int64 timestamp =,
+	required string uuid = ,
+	required string apikey = , <!-- optional? -->
+	required int32 userId = , <!-- optional? -->
+	required string eventType = ,
+
+	enum NetworkStatus {
+	     ONLINE,
+	     OFFLINE,
+	     BASICALLY-DON'T-KNOW
+	}
+
+	required NetworkStatus networkStatus = ,
+
+	message KeyValue {
+		required string key = ,
+		required string value = ,
+	}
+
+	message Context {
+		optional string containerName = ,
+		optional string stationIdentPlaying = ,
+		repeated KeyValue otherContext = ,
+	}
+
+	required Context context = ,
+
+	message EventData {
+		optional string stationIdent = ,
+		optional string trackId = ,
+		optional string trackVersionId = ,
+		repeated KeyValue otherEventData = ,
+	}
+
+	required EventData eventData = ,
+}
+
+THRIFT
+======
+
+enum NetworkStatus {
+  ONLINE = 1,
+  OFFLINE = 2
+}
+
+struct Context {
+       1: optional string containerName;
+       1: optional string stationIdentPlaying;
+       //+ other optional but recognised fields
+
+       1: optional map<string, string> otherContext; //for extra context info
+}
+
+struct EventData {
+       1: optional string stationIdent;
+       1: optional string trackId;
+       1: optional string trackVersionId;
+       //+ other optional but recognised fields
+
+       1: optional map<string, string> otherEventData; //for event-specific data
+}
+
+struct BBMUserEvent {
+
+       1: required i64 timestamp;
+       1: required string uuid;
+       1: required string apikey; //optional?
+       1: required i32 userId;    //optional?
+       1: required string eventType;
+
+       1: required NetworkStatus networkStatus;
+
+       1: required Context context;
+
+       1: required EventData eventData;
+}
+ 
+Notes
+-----
+
+ * Developer of subsystem responsible for choosing values for eventType, context, eventData.
+ * Developer responsible for documenting event (central google folder etc.)
+ 
+ * Teams should adopt consistent logging style
+ * DW publish standard profiles (i.e. naming conventions and required keys) for standard events
+ 
+ * Aim to log 'too much' information, e.g. currently playing track, station, even when not directly relevant
+
+ * DW will parse JSON events automatically and build raw and processed table representations
+ * Also direct into logstash
+ 
+API
+---
+
+ * POST API or pixel server
+ * All top-level keys required. JSON-encoded string as value for eventData
+ * Client definition will be standardized by Core group for many different API calls
