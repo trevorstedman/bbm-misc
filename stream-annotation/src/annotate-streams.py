@@ -3,6 +3,7 @@ __author__ = 'tom'
 import sys
 import re
 import gzip
+import os
 
 filename = sys.argv[1]
 
@@ -44,18 +45,25 @@ print "streamInfo {0}".format(len(streamInfoStreamStart))
 print "radioReport {0}".format(len(radioReportStreamStart))
 print "streamEnd {0}".format(len(streamEnd))
 
+print "nonRadioReportStreamInfo: streamInfo - radioReport {0}".format(len(streamInfoStreamStart)-len(radioReportStreamStart))
+print "radioReport + nonRadioReportStreamInfo: {0}".format(len(streamInfoStreamStart)+len(radioReportStreamStart))
+
 # Run through file again, find the streamUnique and output an annotated line
 
 streamUniqueRegexp = re.compile('(Sep[^S]+)(.+STREAMUNIQUE=([^|]+).+)')
 
 # Output file]
 
-outputFilename = filename[:-3] + "-output.gz"
+path, filenameOnly = os.path.split(filename)
+outputFilename = filenameOnly[:-3] + "-annotated.gz"
 
 with gzip.open(filename) as f:
     with gzip.open(outputFilename, 'w') as fwrite:
         for newLine in f:
             uniqueMatch = streamUniqueRegexp.match(newLine)
+
+            if not uniqueMatch:
+                continue
 
             isStreamEndMatch = streamEndRegexp.match(newLine)
         
@@ -68,17 +76,17 @@ with gzip.open(filename) as f:
             if lineStreamUnique in radioReportStreamStart:
             
                 if isStreamEndMatch:
-                    annotation="RadioReportStreamEnd:"
+                    annotation="RadioReport:" # keep existing StreamEnd:
                 else:
-                    annotation="RadioReportStreamStart:"
+                    annotation="RadioReport:StreamStart:"
 
             elif lineStreamUnique in streamInfoStreamStart:
                 
                 if isStreamEndMatch:
-                    annotation="StreamInfoStreamEnd:"
+                    annotation="" # this is a native StreamEnd call, so not adding any annotation
                 else:
-                    annotation="StreamInfoStreamStart:"
+                    annotation="StreamInfo:StreamStart:"
 
-            annotatedLine = "{0} {1}{2}".format(timestamp, annotation, restOfLine)
+            annotatedLine = "{0}{1}{2}\n".format(timestamp, annotation, restOfLine)
             #print annotatedLine
             fwrite.write(annotatedLine)
