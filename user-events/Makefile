@@ -2,7 +2,7 @@
 
 .PHONY: all clean python
 
-all: python protoc_middleman
+all: python protoc_middleman thrift_middleman
 
 python:
 #add_person_python list_people_python
@@ -19,6 +19,8 @@ protoc_middleman: etc/userevent.proto
 thrift_middleman: etc/userevent.thrift
 	thrift -o src --gen py etc/userevent.thrift
 	@touch thrift_middleman
+	rm -fr src/genpy
+	mv src/gen-py src/genpy
 
 #add_person_python: add_person.py protoc_middleman
 #	@echo "Writing shortcut script add_person_python..."

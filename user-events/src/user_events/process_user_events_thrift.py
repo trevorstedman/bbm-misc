@@ -68,8 +68,6 @@ def listAllUserEvents(filename):
         sys.exit(1)
     # Query uuids of events
 
-    print str(userEventsBatch)
-
     for userEvent in userEventsBatch.userEvent:
         print "event id: {0}, event data extra fields: {1}".format(userEvent.uuid, [str(k)+ ":" + str(v) for k,v in userEvent.eventData.otherEventData.items()])
 
