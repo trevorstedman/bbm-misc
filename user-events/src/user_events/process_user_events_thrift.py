@@ -1,14 +1,14 @@
 __author__ = 'tom'
 
 import sys
-import userevent_pb2 as ue
+import genpy.userevent_thrift.ttypes as ttypes
 import uuid
 
 def appendUserEvent(userEventsBatch):
 
-    userEvent = userEventsBatch.userEvent.add()
-
     # main keys
+
+    userEvent = ttypes.BBMUserEvent()
 
     userEvent.timestamp = 1000L;
     userEvent.uuid = str(uuid.uuid4())
@@ -17,61 +17,61 @@ def appendUserEvent(userEventsBatch):
     userEvent.eventType = 'artist_search'
 
     # enum
-    userEvent.networkStatus = ue.BBMUserEvent.ONLINE
+    userEvent.networkStatus = ttypes.NetworkStatus.ONLINE
 
     # context
     # contains standardized (optional keys) and list of arbitrary key/values
 
-    context = userEvent.context
+    context = ttypes.Context()
 
     context.containerName = 'now_playing'
     context.trackIdPlaying = 12345
+
     # a lot of optional fields omitted
 
-    arbitraryContext1 = context.otherContext.add()
-    arbitraryContext1.key = 'panel_number'
-    arbitraryContext1.value = '6'
+    context.otherContext = {}
+    context.otherContext["panel_number"] = "6"
+    context.otherContext["veil_lifted"] = "true"
 
-    arbitraryContext2 = context.otherContext.add()
-    arbitraryContext2.key = 'veil_lifted'
-    arbitraryContext2.value = 'true'
+    userEvent.context = context
 
     # event data
 
-    eventData = userEvent.eventData
+    eventData = ttypes.EventData()
 
     eventData.stationIdent = 'a123'
     eventData.trackId = '4321'
 
-    arbitraryData1 = eventData.otherEventData.add()
-    arbitraryData1.key = 'search_phrase'
-    arbitraryData1.value = 'christmas'
+    eventData.otherEventData = {}
+    eventData.otherEventData['search_phrase'] = 'christmas'
+    eventData.otherEventData['search_results'] = "0"
 
-    arbitraryData1 = eventData.otherEventData.add()
-    arbitraryData1.key = 'search_results'
-    arbitraryData1.value = '0'
+    userEvent.eventData = eventData
 
-    if not userEvent.IsInitialized():
-        print "Error in event initialization"
-        sys.exit(1)
+    # add to batch
+    userEventsBatch.userEvent.append(userEvent)
 
-    return userEvent
+    return userEventsBatch
 
 def listAllUserEvents(filename):
 
-    userEventsBatch = ue.BBMUserEventBatch()
+    userEventsBatch = ttypes.BBMUserEventBatch()
+
     try:
         f = open(filename, "rb")
-        userEventsBatch.ParseFromString(f.read())
+        transportIn = ttypes.TTransport.TMemoryBuffer(f.read())
+        protocolIn = ttypes.TBinaryProtocol.TBinaryProtocol(transportIn)
+        userEventsBatch.read(protocolIn)
         f.close()
     except IOError:
         print filename + ": Could not open file.  Exiting"
         sys.exit(1)
-
     # Query uuids of events
 
+    print str(userEventsBatch)
+
     for userEvent in userEventsBatch.userEvent:
-        print "event id: {0}, event data extra fields: {1}".format(userEvent.uuid, [e.key for e in userEvent.eventData.otherEventData])
+        print "event id: {0}, event data extra fields: {1}".format(userEvent.uuid, [str(k)+ ":" + str(v) for k,v in userEvent.eventData.otherEventData.items()])
 
 def main():
 
@@ -90,14 +90,19 @@ def main():
 
         # load existing events
 
-        userEventsBatch = ue.BBMUserEventBatch()
+        userEventsBatch = ttypes.BBMUserEventBatch()
 
         try:
             f = open(filename, "rb")
-            userEventsBatch.ParseFromString(f.read())
+            transportIn = ttypes.TTransport.TMemoryBuffer(f.read())
+            protocolIn = ttypes.TBinaryProtocol.TBinaryProtocol(transportIn)
+            userEventsBatch.read(protocolIn)
             f.close()
         except IOError:
             print filename + ": Could not open file.  Creating a new one."
+
+            # initialise userEventsBatch
+            userEventsBatch.userEvent = []
 
         # Append new user events
 
@@ -108,7 +113,12 @@ def main():
 
         try:
             f = open(filename, "wb")
-            f.write(userEventsBatch.SerializeToString())
+            transportOut = ttypes.TTransport.TMemoryBuffer()
+            protocolOut = ttypes.TBinaryProtocol.TBinaryProtocol(transportOut)
+            userEventsBatch.write(protocolOut)
+            byteRep = transportOut.getvalue()
+
+            f.write(byteRep)
             f.close()
 
             print "Wrote {0} user events".format(noEvents)

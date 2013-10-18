@@ -1,0 +1,2 @@
+Rename gen-py (invalid?) to genpy
+export PYTHONPATH=`pwd`:/usr/lib/python2.7/site-packages/ so we can find the site python thrift packages

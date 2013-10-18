@@ -16,6 +16,10 @@ protoc_middleman: etc/userevent.proto
 	protoc -I=etc/ --python_out=src/user_events etc/userevent.proto
 	@touch protoc_middleman
 
+thrift_middleman: etc/userevent.thrift
+	thrift -o src --gen py etc/userevent.thrift
+	@touch thrift_middleman
+
 #add_person_python: add_person.py protoc_middleman
 #	@echo "Writing shortcut script add_person_python..."
 #	@echo '#! /bin/sh' > add_person_python
