@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b492157f-ff36-4742-b735-19cad06062ca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-events/js/protobuf.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-events/js/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-events/js/thrift.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user-events/js/protobuf.html" afterPath="$PROJECT_DIR$/user-events/js/protobuf.html" />
     </list>
     <ignored path="bbm-misc.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382353803517" ignored="false" />
-    <file path="/protobuf.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382433906426" ignored="false" />
+    <file path="/protobuf.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382442140510" ignored="false" />
     <file path="/a.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382356149008" ignored="false" />
     <file path="/a.js" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382356144154" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382433929543" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382442146136" ignored="false" />
     <file path="/readme.md" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382373327179" ignored="false" />
     <file path="/thrift.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382371178477" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -118,10 +115,9 @@
       <file leaf-file-name="protobuf.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user-events/js/protobuf.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="53" selection-start="761" selection-end="761" vertical-scroll-proportion="-0.4716981">
+            <state line="233" column="59" selection-start="7164" selection-end="7164" vertical-scroll-proportion="1.0157232">
               <folding>
                 <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#3377#3415#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -745,10 +741,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/user-events/js/protobuf.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="53" selection-start="761" selection-end="761" vertical-scroll-proportion="-0.4716981">
+        <state line="233" column="59" selection-start="7164" selection-end="7164" vertical-scroll-proportion="1.0157232">
           <folding>
             <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#3377#3415#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -217,19 +217,25 @@
        */
       this.get = function() {
 
-        var dataString = window.localStorage.userEventData;
-        if (!dataString) {
+        try {
+
+          var dataString = window.localStorage.userEventData;
+          if (!dataString) {
+            return;
+          }
+
+          var arrayBuffer = new ArrayBuffer(dataString.length * 2); // 2 bytes for each char
+          var bufferView = new Uint8Array(arrayBuffer);
+          for (var i = 0, strLen = dataString.length; i < strLen; i++) {
+            bufferView[i] = dataString.charCodeAt(i);
+          }
+
+          // decode the binary blob into a UserEventBatch object
+          return bbm.BBMUserEventBatch.decode(arrayBuffer);
+        }
+        catch (e) {
           return;
         }
-
-        var arrayBuffer = new ArrayBuffer(dataString.length * 2); // 2 bytes for each char
-        var bufferView = new Uint8Array(arrayBuffer);
-        for (var i = 0, strLen = dataString.length; i < strLen; i++) {
-          bufferView[i] = dataString.charCodeAt(i);
-        }
-
-        // decode the binary blob into a UserEventBatch object
-        return bbm.BBMUserEventBatch.decode(arrayBuffer);
       };
     }
 
