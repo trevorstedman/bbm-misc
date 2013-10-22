@@ -2,17 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b492157f-ff36-4742-b735-19cad06062ca" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-events/js/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-events/js/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-events/js/protobuf.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-events/js/protobuf_client.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-events/js/thrift_client.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-events/js/thrift_server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/user-events/js/gen-nodejs/userevent_types.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user-events/js/protobuf.html" afterPath="$PROJECT_DIR$/user-events/js/protobuf.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bbm-misc.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382353803517" ignored="false" />
-    <file path="/protobuf.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382442406901" ignored="false" />
+    <file path="/protobuf.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382455269156" ignored="false" />
     <file path="/a.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382356149008" ignored="false" />
     <file path="/a.js" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382356144154" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382442662962" ignored="false" />
     <file path="/readme.md" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382373327179" ignored="false" />
     <file path="/thrift.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382371178477" ignored="false" />
+    <file path="/thrift_server.js" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382453536385" ignored="false" />
+    <file path="/package.json" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382454608931" ignored="false" />
+    <file path="/.gitignore" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382454633671" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,36 +83,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../architecture_group/ProtoBuf.js/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../architecture_group/ProtoBuf.js/examples/websocket/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="16" selection-start="193" selection-end="193" vertical-scroll-proportion="-5.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userevent.proto" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user-events/etc/userevent.proto">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="-9.230769">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../architecture_group/ProtoBuf.js/examples/websocket/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -115,10 +95,55 @@
       <file leaf-file-name="protobuf.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user-events/js/protobuf.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="224" column="61" selection-start="6797" selection-end="6797" vertical-scroll-proportion="0.7012579">
+            <state line="3" column="2" selection-start="34" selection-end="34" vertical-scroll-proportion="0.04610656">
               <folding>
                 <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="protobuf_client.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user-events/js/protobuf_client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="62" column="109" selection-start="1745" selection-end="1745" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thrift_client.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user-events/js/thrift_client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thrift_server.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user-events/js/thrift_server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="124" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user-events/js/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="58" selection-start="96" selection-end="96" vertical-scroll-proportion="-1.875">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../architecture_group/ProtoBuf.js/examples/websocket/server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="67" selection-start="0" selection-end="2256" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -126,7 +151,7 @@
       <file leaf-file-name="thrift.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user-events/js/thrift.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="78" selection-start="98" selection-end="161" vertical-scroll-proportion="-3.125">
+            <state line="63" column="63" selection-start="1292" selection-end="1292" vertical-scroll-proportion="-39.375">
               <folding>
                 <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -134,21 +159,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userevent_types.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user-events/js/gen-js/userevent_types.js">
+      <file leaf-file-name="protobuf.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user-events/js/protobuf.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="129" selection-start="3790" selection-end="3790" vertical-scroll-proportion="-7.8">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="process_user_events_thrift.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user-events/src/user_events/process_user_events_thrift.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="67" selection-start="828" selection-end="828" vertical-scroll-proportion="0.0">
+            <state line="56" column="1" selection-start="761" selection-end="761" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -157,16 +171,7 @@
       <file leaf-file-name="readme.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user-events/js/readme.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="26" selection-start="469" selection-end="469" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="process_user_events.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user-events/src/user_events/process_user_events.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="32" selection-start="2678" selection-end="2678" vertical-scroll-proportion="0.0">
+            <state line="14" column="0" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -193,6 +198,11 @@
         <option value="$PROJECT_DIR$/user-events/js/protobuf/protobuf.html" />
         <option value="$PROJECT_DIR$/user-events/js/thrift.html" />
         <option value="$PROJECT_DIR$/user-events/js/readme.md" />
+        <option value="$PROJECT_DIR$/user-events/js/thrift_server.js" />
+        <option value="$PROJECT_DIR$/user-events/js/.gitignore" />
+        <option value="$PROJECT_DIR$/user-events/js/package.json" />
+        <option value="$PROJECT_DIR$/user-events/js/css/protobuf.css" />
+        <option value="$PROJECT_DIR$/user-events/js/protobuf_client.js" />
         <option value="$PROJECT_DIR$/user-events/js/protobuf.html" />
       </list>
     </option>
@@ -323,28 +333,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bbm-misc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bbm-misc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user-events" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gen-js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -662,27 +650,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../architecture_group/ProtoBuf.js/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user-events/src/user_events/process_user_events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="32" selection-start="2678" selection-end="2678" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user-events/etc/userevent.thrift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="28" selection-start="638" selection-end="638" vertical-scroll-proportion="0.39">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../architecture_group/ProtoBuf.js/examples/websocket/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="16" selection-start="193" selection-end="193" vertical-scroll-proportion="-5.0">
@@ -707,28 +674,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-events/js/thrift.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="78" selection-start="98" selection-end="161" vertical-scroll-proportion="-3.125">
-          <folding>
-            <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user-events/js/gen-js/userevent_types.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="139" column="129" selection-start="3790" selection-end="3790" vertical-scroll-proportion="-7.8">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user-events/js/readme.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="26" selection-start="469" selection-end="469" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -739,9 +690,83 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../architecture_group/ProtoBuf.js/examples/websocket/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="67" selection-start="0" selection-end="2256" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-events/js/readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="414" selection-end="414" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-events/js/gen-nodejs/userevent_types.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-events/js/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-events/js/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="58" selection-start="96" selection-end="96" vertical-scroll-proportion="-1.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-events/js/thrift.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="63" selection-start="1292" selection-end="1292" vertical-scroll-proportion="-39.375">
+          <folding>
+            <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-events/js/protobuf.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="1" selection-start="761" selection-end="761" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-events/js/thrift_server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="124" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-events/js/protobuf_client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="109" selection-start="1745" selection-end="1745" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-events/js/thrift_client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/user-events/js/protobuf.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="61" selection-start="6797" selection-end="6797" vertical-scroll-proportion="0.7012579">
+        <state line="3" column="2" selection-start="34" selection-end="34" vertical-scroll-proportion="0.04610656">
           <folding>
             <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>

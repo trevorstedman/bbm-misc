@@ -1,0 +1,57 @@
+body {
+    font-family: arial,verdana;
+}
+
+div.header {
+    padding: 5px;
+    font-weight: bold;
+}
+#content {
+    border: 1px solid black;
+    padding: 5px;
+    margin-bottom: 20px;
+    background-color: #eee;
+}
+
+div.form {
+    display: block;
+    width: 400px;
+    padding-bottom: 5px;
+    position: relative;
+}
+fieldset {
+    border: none;
+}
+label {
+    font-weight: bold;
+    padding: 0 10px 10px 0;
+    clear: left;
+    display: inline-block;
+}
+input {
+    float: right;
+}
+input {
+    width: 150px;
+}
+button {
+    float: right;
+    margin-right: 5px;
+}
+
+table {
+    margin: 5px;
+}
+tr:nth-child(odd) {
+    background-color: #ddd;
+}
+tr:nth-child(even) {
+    background-color: #eee;
+}
+th {
+    font-weight: bold;
+    text-align: left;
+}
+td {
+    padding: 5px;
+}

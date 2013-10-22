@@ -1,0 +1,13 @@
+{
+  "name": "trevor",
+  "version": "0.0.1",
+  "author": "Trevor Stedman <trevors@blinkbox.com>",
+  "description": "Apache Thrift Demo",
+  "dependencies": {
+    "express":  "*",
+    "thrift": "*"
+  },
+  "engines": {
+    "node": ">=0.8"
+  }
+}
