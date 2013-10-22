@@ -234,6 +234,7 @@
           return bbm.BBMUserEventBatch.decode(arrayBuffer);
         }
         catch (e) {
+          console.error(e);
           return;
         }
       };
