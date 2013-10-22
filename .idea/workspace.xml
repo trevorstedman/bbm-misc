@@ -7,10 +7,10 @@
     <ignored path="bbm-misc.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382353803517" ignored="false" />
-    <file path="/protobuf.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382442296963" ignored="false" />
+    <file path="/protobuf.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382442406901" ignored="false" />
     <file path="/a.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382356149008" ignored="false" />
     <file path="/a.js" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382356144154" ignored="false" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382442297668" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382442662962" ignored="false" />
     <file path="/readme.md" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382373327179" ignored="false" />
     <file path="/thrift.html" changelist="b492157f-ff36-4742-b735-19cad06062ca" time="1382371178477" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -115,7 +115,7 @@
       <file leaf-file-name="protobuf.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user-events/js/protobuf.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="236" column="27" selection-start="7222" selection-end="7222" vertical-scroll-proportion="0.7798742">
+            <state line="224" column="61" selection-start="6797" selection-end="6797" vertical-scroll-proportion="0.7012579">
               <folding>
                 <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -741,7 +741,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/user-events/js/protobuf.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="27" selection-start="7222" selection-end="7222" vertical-scroll-proportion="0.7798742">
+        <state line="224" column="61" selection-start="6797" selection-end="6797" vertical-scroll-proportion="0.7012579">
           <folding>
             <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
