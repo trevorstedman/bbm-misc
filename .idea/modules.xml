@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../architecture_group/architecture_group.iml" filepath="$PROJECT_DIR$/../../architecture_group/architecture_group.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bbm-misc.iml" filepath="$PROJECT_DIR$/bbm-misc.iml" />
+    </modules>
+  </component>
+</project>
+

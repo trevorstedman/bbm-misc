@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script src="gen-js/userevent_types.js"></script>
+  <script src="https://rawgithub.com/apache/thrift/master/lib/js/src/thrift.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+  <style type="text/css">
+
+    body {
+      font-family: arial,verdana;
+    }
+
+    div.header {
+      padding: 5px;
+      font-weight: bold;
+    }
+    #content {
+      border: 1px solid black;
+      padding: 5px;
+      margin-bottom: 20px;
+      background-color: #eee;
+    }
+
+    form.form {
+      padding-bottom: 5px;
+    }
+    fieldset {
+      border: none;
+    }
+    label {
+      font-weight: bold;
+      padding-right: 10px;
+    }
+
+    table {
+      margin: 5px;
+    }
+    tr:nth-child(odd) {
+      background-color: #ddd;
+    }
+    tr:nth-child(even) {
+      background-color: #eee;
+    }
+    th {
+      font-weight: bold;
+      text-align: left;
+    }
+    td {
+      padding: 5px;
+    }
+  </style>
+
+</head>
+<body>
+
+<form class="form">
+  <div class="header">Add some data</div>
+  <fieldset>
+    <label for="apiKey">API Key:</label><input type="text" id="apiKey" value="" />
+    <label for="userId">User ID:</label><input type="text" id="userId" value="1234" />
+    <label for="eventType">Event Type:</label><input type="text" id="eventType" value="artist_search" />
+  </fieldset>
+  <button onclick="appendUserEvent();return false;">Send</button><button onclick="clearEvents();return false;">Clear</button>
+</form>
+
+<div class="header">Binary content (8-bit):</div>
+<div id="content">null</div>
+
+<div class="header">Stored data:</div>
+<table id="log" style="width: 100%;">
+  <tr class="header">
+    <th>UUID</th>
+    <th>ApiKey</th>
+    <th>UserID</th>
+    <th>Event type</th>
+    <th>Context.ContainerName</th>
+    <th>Context.TrackIdPlaying</th>
+    <th>EventData.StationIdent</th>
+    <th>EventData.TrackId</th>
+  </tr>
+</table>
+
+
+<script>
+
+  var log = document.getElementById("log");
+  var text = document.getElementById("text");
+
+  var ProtoBuf = dcodeIO.ProtoBuf;
+  var bbm = ProtoBuf.protoFromFile("../etc/userevent.proto").build('bbm');
+  var userEventBatch;
+  var storage = new Storage();
+
+  userEventBatch = storage.get() || new bbm.BBMUserEventBatch();
+
+  listUserEvents(userEventBatch);
+
+  $('form.form').on('submit', function(event) {
+    event.preventDefault();
+  });
+
+  /**
+   * Adds some BBMUserEvent data to the storage BBMUserEventBatch object
+   */
+  function appendUserEvent() {
+
+    var userEvent = new bbm.BBMUserEvent();
+
+    // main keys
+    userEvent.timestamp = 1000;
+    userEvent.uuid = new Date().getTime();
+    userEvent.apikey = $('#apiKey').val();
+    userEvent.userId = $('#userId').val();
+    userEvent.eventType = $('#eventType').val();
+
+    // enum
+    userEvent.networkStatus = bbm.BBMUserEvent.NetworkStatus.ONLINE;
+
+    // context
+    // contains standardized (optional keys) and list of arbitrary key/values
+    var context = new bbm.BBMUserEvent.Context();
+    context.containerName = 'now_playing';
+    context.trackIdPlaying = 12345;
+    userEvent.set('context', context);
+
+    // event data
+    var eventData = new bbm.BBMUserEvent.EventData();
+    eventData.stationIdent = 'a123';
+    eventData.trackId = '4321';
+    userEvent.set('eventData', eventData);
+
+    userEventBatch.add('userEvent', userEvent);
+    storage.set(userEventBatch);
+
+    listUserEvents();
+  }
+
+  /**
+   * Renders the user event data on screen.
+   */
+  function listUserEvents() {
+
+    var $log = $('#log');
+    $log.find('tr').not('.header').remove();
+
+    for (var i = 0; i < userEventBatch.userEvent.length; i++) {
+      var $tr = $('<tr>')
+        .append($('<td/>').html(userEventBatch.userEvent[i].uuid))
+        .append($('<td/>').html(userEventBatch.userEvent[i].apikey))
+        .append($('<td/>').html(userEventBatch.userEvent[i].userId))
+        .append($('<td/>').html(userEventBatch.userEvent[i].eventType))
+        .append($('<td/>').html(userEventBatch.userEvent[i].context.containerName))
+        .append($('<td/>').html(userEventBatch.userEvent[i].context.trackIdPlaying))
+        .append($('<td/>').html(userEventBatch.userEvent[i].eventData.stationIdent))
+        .append($('<td/>').html(userEventBatch.userEvent[i].eventData.trackId))
+        .appendTo($log);
+    }
+
+    $('#content').html(window.localStorage.userEventData);
+  }
+
+  /**
+   * Deletes all UserEvent data.
+   */
+  function clearEvents() {
+
+    // BUG: ProtoBuf,js seems to break when you save an empty repeated field
+    //userEventBatch.userEvent.length = 0;
+    //storage.set(userEventBatch);
+
+    // do it this way instead (not nice)
+    window.localStorage.userEventData = '';
+    userEventBatch = new bbm.BBMUserEventBatch();
+
+    listUserEvents();
+  }
+
+  /**
+   * A helper class to storage and retrieve protocol buffers objects in HTML5 Local Storage.
+   * The binary protocol buffer data is stored in a binary string.
+   */
+  function Storage() {
+
+    /**
+     * Stores the given BBMUserEventBatch object as a binary string inside Local Storage
+     */
+    this.set = function(userEventBatch) {
+      window.localStorage.userEventData = String.fromCharCode.apply(null, new Uint8Array(userEventBatch.toArrayBuffer()));
+    };
+
+    /**
+     * Retrieves and decodes the store binary string into a BBMUserEventData object
+     */
+    this.get = function() {
+
+      var dataString = window.localStorage.userEventData;
+      if (!dataString) {
+        return;
+      }
+
+      var arrayBuffer = new ArrayBuffer(dataString.length * 2); // 2 bytes for each char
+      var bufferView = new Uint8Array(arrayBuffer);
+      for (var i = 0, strLen = dataString.length; i < strLen; i++) {
+        bufferView[i] = dataString.charCodeAt(i);
+      }
+
+      // decode the binary blob into a UserEventBatch object
+      return bbm.BBMUserEventBatch.decode(arrayBuffer);
+    };
+  }
+
+</script>
+</body>
+</html>
